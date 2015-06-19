@@ -9,9 +9,12 @@ liftMaybe :: (Maybe a, b) -> Maybe (a, b)
 liftMaybe (Nothing, _) = Nothing
 liftMaybe (Just a, b)  = Just (a, b)
 
+myReport = Report [] "Writing Progress" "José's Thesis: Progress Report"
+
 main = do
-    [f] <- getArgs
-    res <- readTimeVal f "%F %T"
+    [inF, outF] <- getArgs
+    res <- readTimeVal inF "%F %T"
     case res of
         Left s -> putStrLn s
-        Right v -> putStr $ unlines $ fmap show $ catMaybes $ fmap liftMaybe $ V.toList v
+        Right v -> let myData = catMaybes $ fmap liftMaybe $ V.toList v
+                   in mkReport (myReport { dat = myData }) outF
