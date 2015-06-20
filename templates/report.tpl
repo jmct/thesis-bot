@@ -33,12 +33,12 @@
 
     <div id="wordcount" style="width:600px;height:300px"></div>
    
-    <p> Insert link to current PDF </p> 
+    <p> <a href=http://jmct.cc/thesis.pdf> Current draft. </a></p> 
 
    <script type="text/javascript">
    var data = {{data}};
    $(function () {
-       var plot = $.plot("#wordcount", [{label: "Word Count", data: data}], {xaxis: {mode: "time"}});
+       var plot = $.plot("#wordcount", [{label: "Word Count", data: data}], {xaxis: {mode: "time"}, grid: {hoverable: true}});
     });
    </script>
  </body>
