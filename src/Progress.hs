@@ -5,17 +5,20 @@ module Progress ( readTimeVal
                 ) where
 
 import Control.Applicative
-import Data.Csv
+import Data.Csv hiding (encode)
 import Data.Time.Format
 import Data.Time.Clock
 import Data.Time.Clock.POSIX
 import Paths_progress (getDataFileName)
-import qualified Data.ByteString.Lazy as BL (readFile)
+import qualified Data.ByteString.Lazy as BL (readFile, putStr)
+import qualified Data.ByteString.Lazy.Char8 as BL (unpack)
+import qualified Data.ByteString as BS
 import qualified Data.Text.IO as T (readFile)
 import qualified Data.Text.Lazy.IO as T (writeFile)
 import qualified Data.Vector as V
 import Text.Hastache
 import Text.Hastache.Context
+import Data.Aeson (encode)
 
 -- | Takes the time-format string (as used by 'parseTimeM'), and the string to parse
 pTime :: String -> String -> Maybe Int
@@ -46,4 +49,5 @@ mkReport rep outFile = do
   where
     context "subtitle" = MuVariable $ subtitle rep
     context "title"    = MuVariable $ title rep
+    context "data"     = MuVariable $ BL.unpack $ encode $ dat rep
     context _          = MuNothing

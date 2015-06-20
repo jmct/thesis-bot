@@ -17,6 +17,10 @@
 -->
 {{#include}}progress.css{{/include}}
 <link rel="stylesheet" type="text/css" href="progress.css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script language="javascript" type="text/javascript" src="jquery.flot.min.js"></script>
+<script language="javascript" type="text/javascript" src="jquery.flot.time.js"></script>
+
 
  </head>
  <body>
@@ -27,7 +31,16 @@
 
    <h2>Overview</h2>
 
-    This is a test.
+    <div id="wordcount" style="width:600px;height:300px"></div>
+   
+    <p> Insert link to current PDF </p> 
 
+   <script type="text/javascript">
+   var data = {{data}};
+   $(function () {
+       var plot = $.plot("#wordcount", [{label: "Word Count", data: data}], {xaxis: {mode: "time"}});
+    });
+   </script>
  </body>
+
 </html>
