@@ -38,7 +38,7 @@
    <script type="text/javascript">
    var data = {{data}};
    $(function () {
-       var plot = $.plot("#wordcount", [{label: "Word Count", data: data}], {xaxis: {mode: "time"}, grid: {hoverable: true}});
+       var plot = $.plot("#wordcount", [{label: "Word Count", data: data}], {legend: {position: "nw"}, xaxis: {mode: "time"}, grid: {hoverable: true}});
     });
    </script>
  </body>
