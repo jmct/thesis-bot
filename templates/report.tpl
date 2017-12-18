@@ -33,7 +33,7 @@
 
     <div id="wordcount" style="width:600px;height:300px"></div>
    
-    <p> <a href=http://jmct.cc/thesis.pdf> Current draft. </a></p> 
+    <p> <a href={{url}}> Current draft. </a></p> 
 
    <script type="text/javascript">
    var data = {{data}};

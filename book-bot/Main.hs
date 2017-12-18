@@ -9,7 +9,7 @@ liftMaybe :: (Maybe a, b) -> Maybe (a, b)
 liftMaybe (Nothing, _) = Nothing
 liftMaybe (Just a, b)  = Just (a, b)
 
-myReport = Report [] "Writing Progress" "José's Thesis: Progress Report" "http://jmct.cc/thesis.pdf"
+myReport = Report [] "Writing Progress" "Implementation of Functional Languages update: Progress Report" "http://jmct.cc/ifpl2.pdf"
 
 main = do
     [inF, outF] <- getArgs

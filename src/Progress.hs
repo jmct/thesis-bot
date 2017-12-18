@@ -36,9 +36,10 @@ readTimeVal file format = do
 data Report = Report { dat :: [(Int, Int)]
                      , title :: String
                      , subtitle :: String
+                     , url :: String
                      }
 
-defaultReport = Report [] "Title" "Subtitle"
+defaultReport = Report [] "Title" "Subtitle" "http://jmct.cc"
 
 -- | Render the given time-series 'Report' to the given output file
 mkReport :: Report -> FilePath -> IO ()
@@ -50,4 +51,5 @@ mkReport rep outFile = do
     context "subtitle" = MuVariable $ subtitle rep
     context "title"    = MuVariable $ title rep
     context "data"     = MuVariable $ BL.unpack $ encode $ dat rep
+    context "url"      = MuVariable $ url rep
     context _          = MuNothing
